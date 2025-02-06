@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel - @yield('titulo')</title>
+        <title>Devstagram - @yield('titulo')</title>
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -15,6 +15,11 @@
     </head>
     <body>
 
+        <h1 class="text-4xl font-extrabold">@yield('titulo')</h1>
+
+        <hr>
+
+        @yield('contenido')
 
     </body>
 </html>
