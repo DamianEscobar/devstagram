@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -24,7 +25,10 @@ class RegisterController extends Controller
         $request->validate( [
             'name' => 'required|max:30',
             'username' => 'required|unique:users|min:3|max:20',
-            'email' => 'required|unique:users|email|max:60','password' => 'required'
+            'email' => 'required|unique:users|email|max:60','password' => 'required|confirmed|min:6'
         ]);
+
+        dd('Creando Usuario');
+
     }
 }
