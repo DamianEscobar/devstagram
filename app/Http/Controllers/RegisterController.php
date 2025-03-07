@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -28,7 +29,14 @@ class RegisterController extends Controller
             'email' => 'required|unique:users|email|max:60','password' => 'required|confirmed|min:6'
         ]);
 
-        dd('Creando Usuario');
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->username,
+            'password' => $request->password,
+            'remember_token' => $request->password_confirmation
+
+        ]);
 
     }
 }
