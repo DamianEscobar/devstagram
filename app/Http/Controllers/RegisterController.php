@@ -32,10 +32,8 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'username' => $request->username,
-            'email' => $request->username,
-            'password' => $request->password,
-            'remember_token' => $request->password_confirmation
-
+            'email' => $request->email,
+            'password' => $request->password
         ]);
 
     }
