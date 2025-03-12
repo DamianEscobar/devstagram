@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class RegisterController extends Controller
 {
@@ -22,6 +23,9 @@ class RegisterController extends Controller
         //dd($request);
         //dd($request->get('username'));
 
+        /** Modificar Request */
+        $request->request->add(['username' => Str::slug($request->username)]);
+
         /** VALIDACION */
         $request->validate( [
             'name' => 'required|max:30',
@@ -35,6 +39,9 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ]);
+
+        /** Redireccionar */
+        
 
     }
 }
