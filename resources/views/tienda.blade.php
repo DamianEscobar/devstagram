@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('titulo')
+    Tienda
+@endsection
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-
-</head>
-
-<body class="antialiased">
-    <nav>
-        <a href="/">Principal</a>
-        <a href="/nosotros">Nosotros</a>
-        <a href="/tienda">Tienda</a>
-    </nav>
-
-    <h1>Tienda</h1>
-</body>
-
-</html>
+@section('contenido')
+    Productos
+@endsection
