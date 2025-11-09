@@ -11,13 +11,21 @@
         </div>
 
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-lg">
-            <form action="">
+            <form action="{{ route('register') }}" method="post">
+                @csrf
                 <div class="mb-5">
                     <label class="mb-2 block uppercase text-gray-500 font-bold" for="name">
                         Nombre
                     </label>
                     <input id="name" name="name" placeholder="Tu nombre" type="text"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('name')
+                                                                border-red-500
+                                                            @enderror"
+                        value= "{{ old('name') }}">
+                    @error('name')
+                        <p class="bg-red-500 text-white rounded-lg text-sm p-1 text-center mt-1">
+                            {{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -25,7 +33,14 @@
                         Username
                     </label>
                     <input id="username" name="username" placeholder="Tu nombre de usuario" type="text"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('username')
+                                                                border-red-500
+                                                            @enderror"
+                        value= "{{ old('username') }}">
+                    @error('username')
+                        <p class="bg-red-500 text-white rounded-lg text-sm p-1 text-center mt-1">
+                            {{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -33,7 +48,14 @@
                         Email
                     </label>
                     <input id="email" name="email" placeholder="Tu email" type="email"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('email')
+                                                                border-red-500
+                                                            @enderror"
+                        value= "{{ old('email') }}">
+                    @error('email')
+                        <p class="bg-red-500 text-white rounded-lg text-sm p-1 text-center mt-1">
+                            {{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -41,7 +63,13 @@
                         Contraseña
                     </label>
                     <input id="password" name="password" placeholder="Tu password" type="password"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('password')
+                                                                border-red-500
+                                                            @enderror">
+                    @error('password')
+                        <p class="bg-red-500 text-white rounded-lg text-sm p-1 text-center mt-1">
+                            {{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
