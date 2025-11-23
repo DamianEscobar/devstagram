@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    //
-    public function index()
+    public function __construct()
     {
-        dd('Desde el muro..');
+        $this->middleware('auth');
+    }
+    //
+    public function index(User $user)
+    {
+
+        return view('dashboard', [
+            'user' => $user
+        ]);
     }
 }
