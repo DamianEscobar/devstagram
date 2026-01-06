@@ -15,9 +15,11 @@ class PostsController extends Controller
     //
     public function index(User $user)
     {
+        $posts = Post::where('user_id', $user->id)->paginate(8);
 
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
@@ -45,12 +47,19 @@ class PostsController extends Controller
         ]); */
 
         // Otra forma de crear un registro
-        $post = new Post;
+        /* $post = new Post;
         $post->titulo = $request->titulo;
         $post->descripcion = $request->descripcion;
         $post->imagen = $request->imagen;
         $post->user_id = auth()->user()->id;
-        $post->save();
+        $post->save(); */
+
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id
+        ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
