@@ -33,5 +33,6 @@ Route::get('/{user:username}', [PostsController::class, 'index'])->name('posts.i
 
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+Route::get('/{user:username}/posts/{post}',[PostsController::class,'show'])->name('posts.show');
 
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');

@@ -15,7 +15,8 @@ class PostsController extends Controller
     //
     public function index(User $user)
     {
-        $posts = Post::where('user_id', $user->id)->paginate(8);
+        $posts = $user->posts()->paginate(4);
+        //Post::where('user_id', $user->id)->paginate(12);
 
         return view('dashboard', [
             'user' => $user,
@@ -62,5 +63,12 @@ class PostsController extends Controller
         ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show',[
+            'post' => $post
+        ]);
     }
 }
